@@ -3,4 +3,8 @@ class Transfer < ActiveRecord::Base
 
   belongs_to :origin_account, class_name: 'Account'
   belongs_to :destination_account, class_name: 'Account'
+
+  validates :origin_account, :destination_account, :value
+      presence: true
+  
 end
