@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429133609) do
+ActiveRecord::Schema.define(version: 20140504180050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", force: true do |t|
+    t.string   "number"
+    t.decimal  "balance"
+    t.integer  "holder_id"
+    t.integer  "bank_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts", ["bank_id"], name: "index_accounts_on_bank_id", using: :btree
+  add_index "accounts", ["holder_id"], name: "index_accounts_on_holder_id", using: :btree
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -30,6 +42,24 @@ ActiveRecord::Schema.define(version: 20140429133609) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "banks", force: true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "banks", ["account_id"], name: "index_banks_on_account_id", using: :btree
+
+  create_table "participants", force: true do |t|
+    t.string   "name"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "participants", ["account_id"], name: "index_participants_on_account_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
