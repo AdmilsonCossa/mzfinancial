@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  origin_account_id: 
+  destination_account_id: 
+  value: 9.99
+
+two:
+  description: MyText
+  origin_account_id: 
+  destination_account_id: 
+  value: 9.99
