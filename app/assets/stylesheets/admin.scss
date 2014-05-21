@@ -1,0 +1,103 @@
+@import "active_admin/mixins/all";
+@import "variables";
+@import "mixins";
+
+/* forms */
+body.active_admin form fieldset.inputs {
+  border: 0;
+  padding: 10px 10px;
+  @include box-shadow-none;
+  background: transparent;
+  border: 1px solid $greengrey;
+  position: relative;
+
+  @include box-shadow-inset(0, 1px, 4px, #ddd)
+}
+
+body.active_admin .comments form.active_admin_comment fieldset.inputs {
+  @include box-shadow-none;
+  border: 0;
+
+  & li {
+    border: 0;
+  }
+}
+
+body.active_admin form fieldset.inputs ol > li {
+  overflow: hidden;
+  border-bottom: 1px solid $greengrey;
+  padding: 10px 0;
+}
+
+body.active_admin form fieldset ol > li label {
+  color: #5E6469;
+  width: 15%;
+  font-size: .9em;
+  text-transform: uppercase;
+}
+
+body.active_admin form input[type="text"], body.active_admin form input[type="password"], body.active_admin form input[type="email"], body.active_admin form input[type="number"], body.active_admin form input[type="url"], body.active_admin form input[type="tel"], body.active_admin form textarea {
+  border-color: $greengrey;
+  width: 75%;
+}
+
+body.active_admin form textarea {
+  height: 100px;
+}
+
+body.active_admin form fieldset > ol > li fieldset ol {
+  padding: 0 0 0 15%;
+}
+
+body.active_admin form fieldset > ol > li fieldset ol.fragments-group li {
+  display: inline-block;
+  margin: 0 10px 0 0;
+
+  & label {
+    font-weight: normal;
+    float: none;
+  }
+}
+
+body.active_admin form fieldset.inputs a:link.button {
+  @include border-radius(3px);
+  color: #fff;
+}
+
+body.active_admin form fieldset.actions li.cancel a,
+body.active_admin form.filter_form a.clear_filters_btn  {
+  @include border-radius(3px);
+}
+
+body.active_admin form fieldset > ol > li p.inline-errors {
+  margin-left: 140px;
+}
+
+.ui-datepicker { width: 200px; }
+.ui-datepicker table.ui-datepicker-calendar { width: 196px; }
+
+/* details */
+
+body.active_admin .panel {
+  background: transparent;
+  border: 1px solid $greengrey;
+}
+
+body.active_admin .section > h3,
+body.active_admin .panel > h3,
+body.active_admin .big-chart > h3 {
+  background: $greengrey;
+  border: 0;
+  @include box-shadow-none;
+  color: blue;
+  text-shadow: -1px -1px 3px #fff;
+  font-size: 1.0em;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 0.5em;
+  padding: 5px 10px 3px 10px;
+}
+
+body.active_admin .attributes_table table th, body.active_admin .attributes_table table td {
+  border-color: $greengrey;
+}
