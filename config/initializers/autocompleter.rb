@@ -1,0 +1,2 @@
+require 'autocompleter'
+Autocompleter.setup
