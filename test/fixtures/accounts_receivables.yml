@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  participant_id: 
+  financial_category_id: 
+  expense_type_id: 
+  account_id: 
+  issue_date: 2014-05-14 19:14:12
+  due_date: 2014-05-14 19:14:12
+  value: 9.99
+  description: MyText
+  document_serie: MyString
+  document_number: MyString
+  term_state: MyString
+  state: MyString
+
+two:
+  participant_id: 
+  financial_category_id: 
+  expense_type_id: 
+  account_id: 
+  issue_date: 2014-05-14 19:14:12
+  due_date: 2014-05-14 19:14:12
+  value: 9.99
+  description: MyText
+  document_serie: MyString
+  document_number: MyString
+  term_state: MyString
+  state: MyString
