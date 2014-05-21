@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  value: MyString
+  description: MyString
+  account_id: 
+  transaction_order_id: 
+
+two:
+  value: MyString
+  description: MyString
+  account_id: 
+  transaction_order_id: 
