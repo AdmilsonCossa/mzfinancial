@@ -11,8 +11,7 @@
 // about supported directives.
 //
 
-//= require highchart/highcharts
-//= require highchart/highstocks
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
