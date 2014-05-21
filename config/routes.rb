@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
+  root 'welcome#index'
+  # get 'autocomplete/index'
+
+  # get 'autocomplete/autocomplete_results'
+
+  # get 'autocomplete/model'
+
+  # get 'autocomplete/query_term'
+
+  # get 'autocomplete/participant'
+
+  # get 'autocomplete/account'
+
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-   root 'welcome#index'
+  Autocompleter.routes(self)
+  
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -18,6 +32,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+      resources :autocomplete
 
   # Example resource route with options:
   #   resources :products do
