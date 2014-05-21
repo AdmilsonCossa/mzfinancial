@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140504195809) do
+ActiveRecord::Schema.define(version: 20140514182621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,50 @@ ActiveRecord::Schema.define(version: 20140504195809) do
 
   add_index "accounts", ["bank_id"], name: "index_accounts_on_bank_id", using: :btree
   add_index "accounts", ["holder_id"], name: "index_accounts_on_holder_id", using: :btree
+
+  create_table "accounts_payables", force: true do |t|
+    t.integer  "participant_id"
+    t.integer  "financial_category_id"
+    t.integer  "expense_type_id"
+    t.integer  "account_id"
+    t.datetime "issue_date"
+    t.datetime "due_date"
+    t.decimal  "value"
+    t.text     "description"
+    t.string   "document_serie"
+    t.string   "document_number"
+    t.string   "term_state"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts_payables", ["account_id"], name: "index_accounts_payables_on_account_id", using: :btree
+  add_index "accounts_payables", ["expense_type_id"], name: "index_accounts_payables_on_expense_type_id", using: :btree
+  add_index "accounts_payables", ["financial_category_id"], name: "index_accounts_payables_on_financial_category_id", using: :btree
+  add_index "accounts_payables", ["participant_id"], name: "index_accounts_payables_on_participant_id", using: :btree
+
+  create_table "accounts_receivables", force: true do |t|
+    t.integer  "participant_id"
+    t.integer  "financial_category_id"
+    t.integer  "expense_type_id"
+    t.integer  "account_id"
+    t.datetime "issue_date"
+    t.datetime "due_date"
+    t.decimal  "value"
+    t.text     "description"
+    t.string   "document_serie"
+    t.string   "document_number"
+    t.string   "term_state"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accounts_receivables", ["account_id"], name: "index_accounts_receivables_on_account_id", using: :btree
+  add_index "accounts_receivables", ["expense_type_id"], name: "index_accounts_receivables_on_expense_type_id", using: :btree
+  add_index "accounts_receivables", ["financial_category_id"], name: "index_accounts_receivables_on_financial_category_id", using: :btree
+  add_index "accounts_receivables", ["participant_id"], name: "index_accounts_receivables_on_participant_id", using: :btree
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -73,6 +117,41 @@ ActiveRecord::Schema.define(version: 20140504195809) do
   end
 
   add_index "participants", ["account_id"], name: "index_participants_on_account_id", using: :btree
+
+  create_table "transaction_orders", force: true do |t|
+    t.float    "value"
+    t.string   "description"
+    t.string   "state"
+    t.datetime "state_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transactions", force: true do |t|
+    t.string   "value"
+    t.string   "description"
+    t.integer  "account_id"
+    t.integer  "transaction_order_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "transactions", ["account_id"], name: "index_transactions_on_account_id", using: :btree
+  add_index "transactions", ["transaction_order_id"], name: "index_transactions_on_transaction_order_id", using: :btree
+
+  create_table "transfers", force: true do |t|
+    t.text     "description"
+    t.integer  "origin_account_id"
+    t.integer  "destination_account_id"
+    t.decimal  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
+    t.string   "state"
+  end
+
+  add_index "transfers", ["destination_account_id"], name: "index_transfers_on_destination_account_id", using: :btree
+  add_index "transfers", ["origin_account_id"], name: "index_transfers_on_origin_account_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

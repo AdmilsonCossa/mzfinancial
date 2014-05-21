@@ -14,8 +14,17 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+#gem 'rails3-jquery-autocomplete', git: 'https://github.com/francisd/rails3-jquery-autocomplete'
+#gem 'rails_admin_charts'
+gem 'rails4-autocomplete', '~> 1.0.7'
+
+gem 'jquery-tokeninput-rails', '~> 1.6.0'
+#gem "token_field"
+
+gem 'chart-js-rails', '~> 0.0.6'
 gem 'rails_12factor', group: :production
 gem 'activeadmin',         github: 'gregbell/active_admin'
+#gem 'meta_search', '>= 1.1.0.pre'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -37,6 +46,6 @@ gem 'spring',        group: :development
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+#Use debugger
+gem 'debugger', group: [:development, :test]
 

@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  # get 'autocomplete/index'
+  get 'autocomplete/index'
 
-  # get 'autocomplete/autocomplete_results'
+  get 'autocomplete/autocomplete_results'
 
-  # get 'autocomplete/model'
+  get 'autocomplete/model'
 
-  # get 'autocomplete/query_term'
+  get 'autocomplete/query_term'
 
   # get 'autocomplete/participant'
 
   # get 'autocomplete/account'
+
+  # get 'autocomplete/bank'
 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
