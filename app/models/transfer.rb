@@ -1,10 +1,10 @@
 class Transfer < ActiveRecord::Base
-  attr_accessible :origin_account, :destination_account, :value
+  #attr_accessible :origin_account, :destination_account, :value
 
-  belongs_to :origin_account, class_name: 'Account'
-  belongs_to :destination_account, class_name: 'Account'
+  belongs_to :origin_account, class_name: 'Account', foreign_key: 'id'
+  belongs_to :destination_account, class_name: 'Account', foreign_key: 'id'
 
-  validates :origin_account, :destination_account, :value
+  validates :origin_account, :destination_account, :value,
       presence: true
   
   def execute_transfer!
@@ -13,17 +13,17 @@ class Transfer < ActiveRecord::Base
         origin_account.debit(value)
         destination_account.credit(value)
         self.state = 'executed'
-        self.state_datetime = Time.zone.now
+        self.state_date = Time.zone.now
       else
         self.state = 'failed'
-        self.state_datetime = Time.zone.now
+        self.state_date = Time.zone.now
         elf.state_reason = 'Not enough balance!'
       end
       self.save
       self
     rescue Exception => ex
       self.state = 'failed'
-      self.state_datetime = Time.zone.now
+      self.state_date = Time.zone.now
       self.state_reason = ex.message
       self.save!
       self
