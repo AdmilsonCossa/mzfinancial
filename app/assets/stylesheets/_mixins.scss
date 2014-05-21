@@ -1,0 +1,41 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin border-side-radius($side1, $side2, $radius) {
+  -webkit-border-#{$side1}-#{$side2}-radius: $radius;
+     -moz-border-radius-#{$side1}#{$side2}: $radius;
+          border-#{$side1}-#{$side2}-radius: $radius;
+}
+
+@mixin box-shadow($value1, $value2, $value3, $color) {
+  -moz-box-shadow: $value1 $value2 $value3 $color;
+  -webkit-box-shadow: $value1 $value2 $value3 $color;
+  box-shadow: $value1 $value2 $value3 $color;
+}
+@mixin box-shadow-inset($value1, $value2, $value3, $color) {
+  -moz-box-shadow: inset $value1 $value2 $value3 $color;
+  -webkit-box-shadow: inset $value1 $value2 $value3 $color;
+  box-shadow: inset $value1 $value2 $value3 $color;
+}
+
+@mixin box-shadow-none {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+@mixin transition($args...) {
+  -moz-transition: $args;
+  -webkit-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin box-sizing($type) {
+  -webkit-box-sizing: $type;
+  -moz-box-sizing: $type;
+  box-sizing: $type;
+}
