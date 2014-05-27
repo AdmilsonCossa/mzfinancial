@@ -28,14 +28,16 @@ class AccountsReceivable < ActiveRecord::Base
   end
 
   def confirm(account_receivable)
-    raise 'already factured' if state == 'factured'
+    raise = 'Already factured' if @acc_rec.state == 'factured'
     #account_receivable.account.debit(account_receivable.value)
-    account_receivable.state = 'factured'
-    if(Date.today <= account_receivable.due_date)
-      account_receivable.term_state = 'in time'
-    else
-      account_receivable.term_state = 'Late'
-    end
-    account_receivable.save!
+      account_receivable.state = 'factured'
+      
+      if(Date.today <= account_receivable.due_date)
+        account_receivable.term_state = 'in time'
+      else
+        account_receivable.term_state = 'Late'
+      end
+      account_receivable.save!
+    rescue Exception => ex
   end
 end
