@@ -8,6 +8,7 @@ class AccountsReceivable < ActiveRecord::Base
   belongs_to :account
 
   after_create :check_due_date
+  before_save  :initialize_states
 
   # validates :participant, :financial_category, :expense_type, :account, :value,
   # :document_serie, :document_number, :issue_date, :due_date,
@@ -21,10 +22,9 @@ class AccountsReceivable < ActiveRecord::Base
     end
   end
 
-  def initialize_sate!
+  def initialize_states
     self.state = 'not factured'
-    account_receivable.term_state = 'in time' if Date.today <= account_receivable.due_date
-    self.save    
+    self.term_state = 'in time' if Date.today <= self.due_date   
   end
 
   def confirm(account_receivable)
